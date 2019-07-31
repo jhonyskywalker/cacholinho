@@ -8,6 +8,7 @@ const initialState = {
     font: '',
     image: '',
     position: null,
+    message: false,
   },
 };
 

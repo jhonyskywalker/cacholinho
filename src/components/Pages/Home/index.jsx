@@ -16,7 +16,7 @@ class HomePage extends Component {
   }
 
   handleChange = (data, event) => {
-    this.props.formChange({ [event.name]: data.value });
+    this.props.formChange({ [event.name]: data.value, message: false });
 
     if (event.name === 'breed') {
       this.props.fetchDogImage({ breed: data.value });
@@ -29,8 +29,24 @@ class HomePage extends Component {
     }
   }
 
+  handleClearForm = () => {
+    const clearForm = setTimeout(() => {
+      this.props.formChange({
+        breed: '',
+        name: '',
+        color: '',
+        font: '',
+        image: '',
+        position: null,
+        message: false,
+      });
+    }, 4000);
+  }
+
   handleSave = () => {
+    this.props.formChange({ message: true });
     this.props.addFavorite(this.props.form.payload);
+    this.handleClearForm();
   }
 
   render() {

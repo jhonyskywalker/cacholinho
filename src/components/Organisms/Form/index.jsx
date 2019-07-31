@@ -29,7 +29,7 @@ const FormItem = styled.div`
 
 const FormMessage = (props) => (
   <FormItem>
-    {props.state.saved && <Message>Cacholo Salvo!</Message>}
+    {props.state.message && <Message>Cacholo Salvo!</Message>}
   </FormItem>
 );
 
