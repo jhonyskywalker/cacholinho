@@ -1,8 +1,41 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import designSystem from 'designSystem';
+import { breakpoint } from 'utils';
 
 import Form from '../Form';
+
+const PageHighlight = styled.div`
+  display: flex;
+
+  ${breakpoint('for-phone-only', css`
+    flex-direction: column;
+  `)}
+`;
+
+const PageHightlightItem = styled.div`
+  padding: ${designSystem.size.l};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${breakpoint('for-tablet-portrait-up', css`
+    width: 50%;
+  `)}
+
+  ${breakpoint('for-phone-only', css`
+    flex-direction: column;
+    width: 100%;
+  `)}
+`;
+
+const Top = styled(PageHightlightItem)`
+  background-color: ${designSystem.color.greenDark};
+`;
+
+const Botom = styled(PageHightlightItem)`
+  background-color: ${designSystem.color.yellowDark};
+`;
 
 const TitlePage = styled.h2`
   font-size: ${designSystem.size.l};
@@ -11,47 +44,21 @@ const TitlePage = styled.h2`
   line-height: ${designSystem.size.xl};
 `;
 
-const PageHightlightItem = styled.div`
-  padding: ${designSystem.size.l};
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const Left = styled(PageHightlightItem)`
-  background-color: ${designSystem.color.greenDark};
-`;
-
-const Right = styled(PageHightlightItem)`
-  background-color: ${designSystem.color.yellowDark};
-`;
-
-const PageHighlight = styled.div`
-  display: flex;
-`;
-
-const Title = () => (
-  <div>
-    <TitlePage>
-      Adicione seus CachoLinhos favoritos.
-    </TitlePage>
-  </div>
-);
-
 export default (props) => (
   <PageHighlight>
-    <Left>
-      <Title />
-    </Left>
+    <Top>
+      <TitlePage>
+        Adicione seus CachoLinhos favoritos.
+      </TitlePage>
+    </Top>
 
-    <Right>
+    <Botom>
       <Form
         dog={props.dog}
         handleSave={props.handleSave}
         handleChange={props.handleChange}
         state={props.state}
       />
-    </Right>
+    </Botom>
   </PageHighlight>
 );

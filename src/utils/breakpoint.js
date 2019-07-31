@@ -1,8 +1,6 @@
 import { css } from 'styled-components';
 
-const breakpoint = (params) => {
-  const { context, content } = params;
-
+const breakpoint = (breakpoint, content) => {
   const breakpoints = {
     'for-phone-only': css`
       @media (max-width: 599px) {
@@ -31,7 +29,7 @@ const breakpoint = (params) => {
     `,
   };
 
-  return breakpoints[context];
+  return breakpoints[breakpoint];
 };
 
 export default breakpoint;
