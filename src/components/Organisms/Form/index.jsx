@@ -33,6 +33,12 @@ const Message = styled.p`
   font-size: ${designSystem.size.m};
 `;
 
+const Obs = styled.p`
+  color: ${designSystem.color.gray};
+  margin-top: ${designSystem.size.base};
+
+`;
+
 const FormMessage = (props) => (
   <FormItem>
     {props.state.saved && <Message>Cacholo Salvo!</Message>}
@@ -90,7 +96,10 @@ const FormPreview = (props) => (
       font={props.state.font}
       color={props.state.color}
       name={props.state.name}
+      handleChange={props.handleChange}
+      position={props.state.position}
     />
+    <Obs>Obs: você pode arrastar o texto para um melhor posicionamento</Obs>
   </FormItem>
 );
 

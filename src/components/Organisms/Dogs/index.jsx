@@ -47,6 +47,7 @@ export default (props) => (
             font={item.font}
             color={item.color}
             name={item.name}
+            position={item.position}
           />
           <Button
             type="button"

@@ -14,6 +14,7 @@ class HomePage extends Component {
       color: '',
       font: '',
       image: '',
+      position: null,
       saved: false,
     };
   }
@@ -23,6 +24,8 @@ class HomePage extends Component {
   }
 
   handleChange = (data, event) => {
+    console.log(data, event);
+
     this.setState({
       ...this.state,
       [event.name]: data.value,

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Draggable from 'react-draggable';
 import designSystem from 'designSystem';
 
 const DogContainer = styled.div`
@@ -35,18 +36,39 @@ const DogName = styled.p`
   position: relative;
   text-align: center;
   word-break: break-word;
-  background-color: rgba(0,0,0,0.7);
+  background-color: ${designSystem.color.black};
   padding: 0 8px;
 `;
 
 export default (props) => (
   <DogContainer>
     <DogCover image={props.image} />
-    <DogName
-      font={props.font}
-      color={props.color}
-    >
-      {props.name}
-    </DogName>
+    {props.handleChange ? (
+      <Draggable
+        bounds="parent"
+        position={props.position}
+        onStop={(event, data) => props.handleChange({ value: { x: data.x, y: data.y } }, { name: 'position' })}
+      >
+        <DogName
+          font={props.font}
+          color={props.color}
+        >
+          {props.name}
+        </DogName>
+      </Draggable>
+    ) : (
+      <Draggable
+        disabled
+        bounds="parent"
+        position={props.position}
+      >
+        <DogName
+          font={props.font}
+          color={props.color}
+        >
+          {props.name}
+        </DogName>
+      </Draggable>
+    )}
   </DogContainer>
 );
