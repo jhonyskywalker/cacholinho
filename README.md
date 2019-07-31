@@ -2,6 +2,8 @@
 
 O Cacholinho é uma ferramenta web com objetivo de criar uma lista de Cacholos fofinhos.
 
+Acesse no link <a href="https://cacholinho-8ced7.firebaseapp.com/" target="_blank">Cacholinho</a>.
+
 ## Rodando o projeto
 
 - Tenha instalado o `NodeJS` versão `v10.15.0` ou superior.
