@@ -5,7 +5,7 @@ import { breakpoint } from 'utils';
 
 import Form from '../Form';
 
-const PageHighlight = styled.div`
+const Tool = styled.div`
   display: flex;
 
   ${breakpoint('for-phone-only', css`
@@ -13,7 +13,7 @@ const PageHighlight = styled.div`
   `)}
 `;
 
-const PageHightlightItem = styled.div`
+const Content = styled.div`
   padding: ${designSystem.size.l};
   display: flex;
   justify-content: center;
@@ -29,11 +29,11 @@ const PageHightlightItem = styled.div`
   `)}
 `;
 
-const Top = styled(PageHightlightItem)`
+const ContentLeft = styled(Content)`
   background-color: ${designSystem.color.greenDark};
 `;
 
-const Botom = styled(PageHightlightItem)`
+const ContentRight = styled(Content)`
   background-color: ${designSystem.color.yellowDark};
 `;
 
@@ -45,20 +45,21 @@ const TitlePage = styled.h2`
 `;
 
 export default (props) => (
-  <PageHighlight>
-    <Top>
+  <Tool>
+    <ContentLeft>
       <TitlePage>
         Adicione seus CachoLinhos favoritos.
       </TitlePage>
-    </Top>
+    </ContentLeft>
 
-    <Botom>
+    <ContentRight>
       <Form
         dog={props.dog}
         handleSave={props.handleSave}
         handleChange={props.handleChange}
+        handleImage={props.handleImage}
         state={props.state}
       />
-    </Botom>
-  </PageHighlight>
+    </ContentRight>
+  </Tool>
 );

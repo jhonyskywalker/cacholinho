@@ -26,6 +26,7 @@ const DogCover = styled.div`
   background-position: center top;
   background-size: cover;
   background-image: url(${props => props.image});
+  transition: background-image 1s ease-in-out;
 `;
 
 const DogName = styled.p`

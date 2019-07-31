@@ -60,7 +60,6 @@ const colourStyles = {
 
 const SelectColours = (props) => (
   <Select
-    // defaultValue={colourOptions[2]}
     {...props}
     label="Single select"
     options={colourOptions}

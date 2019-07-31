@@ -19,7 +19,7 @@ const addFavorite = (params, dispatch, getState) => {
 const removeFavorite = (params, dispatch, getState) => {
   const items = getState().favorite.payload;
 
-  _.remove(items, item => item.uuid === params.uuid)
+  _.remove(items, item => item.uuid === params.uuid);
 
   dispatch({
     type: REMOVE_FAVORITE,

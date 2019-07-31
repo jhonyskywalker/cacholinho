@@ -6,37 +6,25 @@ import { SketchPicker } from 'react-color';
 
 import SelectFont from '../../Molecules/SelectFont';
 import Dog from '../../Molecules/Dog';
+import Input from '../../Atoms/Input';
+import Button from '../../Atoms/Button';
+import Message from '../../Atoms/Message';
+import Obs from '../../Atoms/Obs';
 
-const Input = styled.input`
-  width: 100%;
-  height: 38px;
-  border-radius: 4px;
-  border: 1px solid hsl(0,0%,80%);
-  font-weight: bold;
-  padding: 0 8px;
-  font-size: 14px;
-  font-weight: normal;
-  color: hsl(0,0%,20%);
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
-const Button = styled.button`
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-transform: uppercase;
-`;
+const FormItem = styled.div`
+  margin-bottom: ${designSystem.size.base};
 
-const Message = styled.p`
-  background-color: ${designSystem.color.green};
-  color: ${designSystem.color.white};
-  padding: ${designSystem.size.base};
-  font-weight: ${designSystem.font.weight.bold};
-  font-size: ${designSystem.size.m};
-`;
-
-const Obs = styled.p`
-  color: ${designSystem.color.gray};
-  margin-top: ${designSystem.size.base};
-
+  label {
+    margin-bottom: ${designSystem.size.s};
+    display: inline-block;
+    font-weight: ${designSystem.font.weight.bold};
+  }
 `;
 
 const FormMessage = (props) => (
@@ -99,7 +87,12 @@ const FormPreview = (props) => (
       handleChange={props.handleChange}
       position={props.state.position}
     />
-    <Obs>Obs: você pode arrastar o texto para um melhor posicionamento</Obs>
+
+    <Button onClick={props.handleImage}>
+      Mudar imagem
+    </Button>
+
+    <Obs>Obs: você pode arrastar o texto para um melhor posicionamento.</Obs>
   </FormItem>
 );
 
@@ -113,22 +106,6 @@ const FormButton = (props) => (
     </Button>
   </FormItem>
 );
-
-const Form = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const FormItem = styled.div`
-  margin-bottom: ${designSystem.size.base};
-
-  label {
-    margin-bottom: ${designSystem.size.s};
-    display: inline-block;
-    font-weight: ${designSystem.font.weight.bold};
-  }
-`;
 
 export default (props) => (
   <Form>

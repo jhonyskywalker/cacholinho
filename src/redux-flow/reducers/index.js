@@ -8,9 +8,11 @@ import {
 
 import dog from './Dog';
 import favorite from './Favorite';
+import form from './Form';
 
 export default history => combineReducers({
-  favorite,
   dog,
+  favorite,
+  form,
   router: connectRouter(history),
 });

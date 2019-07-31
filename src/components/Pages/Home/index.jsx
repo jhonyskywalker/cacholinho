@@ -1,66 +1,54 @@
 import React, { Component } from 'react';
 
 import TemplateMain from '../../Templates/Main';
-import PageHighlight from '../../Organisms/PageHighlight';
+import Tool from '../../Organisms/Tool';
 import Dogs from '../../Organisms/Dogs';
 
 class HomePage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      breed: '',
-      name: '',
-      color: '',
-      font: '',
-      image: '',
-      position: null,
-      saved: false,
-    };
-  }
-
   componentDidMount() {
     this.props.fetchDogBreeds();
   }
 
-  handleChange = (data, event) => {
-    console.log(data, event);
+  componentDidUpdate(prevProps) {
+    if (prevProps.dog.image.payload !== this.props.dog.image.payload) {
+      this.props.formChange({ image: this.props.dog.image.payload });
+    }
+  }
 
-    this.setState({
-      ...this.state,
-      [event.name]: data.value,
-      saved: false,
-    });
+  handleChange = (data, event) => {
+    this.props.formChange({ [event.name]: data.value });
 
     if (event.name === 'breed') {
       this.props.fetchDogImage({ breed: data.value });
     }
   }
 
-  handleSave = () => {
-    this.setState({ ...this.state, saved: true });
+  handleImage = () => {
+    if (this.props.form.payload.breed.length > 0) {
+      this.props.fetchDogImage({ breed: this.props.form.payload.breed });
+    }
+  }
 
-    this.props.addFavorite({
-      ...this.state,
-      image: this.props.dog.image.payload,
-    });
+  handleSave = () => {
+    this.props.addFavorite(this.props.form.payload);
   }
 
   render() {
-    const { dog } = this.props;
+    const { dog, favorite, removeFavorite } = this.props;
 
     return (
       <TemplateMain>
-        <PageHighlight
+        <Tool
           dog={dog}
           handleSave={this.handleSave}
           handleChange={this.handleChange}
-          state={this.state}
+          handleImage={this.handleImage}
+          state={this.props.form.payload}
         />
 
         <Dogs
-          favorite={this.props.favorite}
-          removeFavorite={this.props.removeFavorite}
+          favorite={favorite.payload}
+          removeFavorite={removeFavorite}
         />
       </TemplateMain>
     );

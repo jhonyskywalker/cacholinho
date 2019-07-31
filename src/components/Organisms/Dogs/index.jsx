@@ -31,7 +31,7 @@ const DogsContainer = styled.div`
   justify-content: center;
 `;
 
-const DogItem =styled.div`
+const DogItem = styled.div`
   padding: ${designSystem.size.s};
   position: relative;
 `;
@@ -40,7 +40,7 @@ export default (props) => (
   <Fragment>
     <Title>Meus Cacholinhos</Title>
     <DogsContainer>
-      {props.favorite.payload.map(item => (
+      {props.favorite.map(item => (
         <DogItem key={item.uuid}>
           <Dog
             image={item.image}

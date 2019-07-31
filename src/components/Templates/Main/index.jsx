@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import designSystem from 'designSystem';
 
 const Header = styled.header`
@@ -16,12 +15,8 @@ const LogoPrimary = styled.span`
   color: ${designSystem.color.yellowDark};
 `;
 
-const LogoSecondary= styled.span`
+const LogoSecondary = styled.span`
   color: ${designSystem.color.greenDark};
-`;
-
-const Container = styled.div`
-  /* padding-top: ${designSystem.size.l}; */
 `;
 
 const Main = ({ children }) => (
@@ -33,9 +28,7 @@ const Main = ({ children }) => (
       </h1>
     </Header>
 
-    <Container>
-      {children}
-    </Container>
+    {children}
   </Fragment>
 );
 
