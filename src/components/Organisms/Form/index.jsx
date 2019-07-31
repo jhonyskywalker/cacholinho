@@ -2,8 +2,8 @@ import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
 import designSystem from 'designSystem';
+import { SketchPicker } from 'react-color';
 
-import SelectColours from '../../Molecules/SelectColours';
 import SelectFont from '../../Molecules/SelectFont';
 import Dog from '../../Molecules/Dog';
 
@@ -57,7 +57,7 @@ const FormName = (props) => (
       name="name"
       type="text"
       value={props.state.name}
-      onChange={event => props.handleChange({value: event.target.value}, {name: event.target.name})}
+      onChange={event => props.handleChange({ value: event.target.value }, { name: event.target.name })}
     />
   </FormItem>
 );
@@ -65,9 +65,9 @@ const FormName = (props) => (
 const FormSelectColor = (props) => (
   <FormItem>
     <label>Escolha a cor do texto:</label>
-    <SelectColours
-      name="color"
-      onChange={props.handleChange}
+    <SketchPicker
+      color={ props.state.color }
+      onChangeComplete={event => props.handleChange({ value: event.hex }, { name: 'color' })}
     />
   </FormItem>
 );
